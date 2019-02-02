@@ -1,4 +1,4 @@
-# WIRELESS BEAR BODY 🐻
+# WIRELESS BEAR 🐻
 
 ## How start it
 
