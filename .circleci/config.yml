@@ -30,16 +30,6 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: yarn test
-  coverage:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/node:11.9
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
       - run: yarn run coverage
 
 workflows:
@@ -50,6 +40,3 @@ workflows:
       - test:
           requires:
             - yarninstall
-      - coverage:
-          requires:
-            - test
