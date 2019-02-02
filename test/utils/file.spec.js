@@ -12,12 +12,12 @@ describe('File utils', () => {
       imported.should.not.have.property('index');
     });
 
-    // it('should default "exclude" prop to an empty array and import everything', () => {
-    //   const imported = fileUtils.importAll('src/config', {});
+    it('should default "exclude" prop to an empty array and import everything', () => {
+      const imported = fileUtils.importAll('src/config', {});
 
-    //   imported.should.have.property('jwt').which.is.an.Object();
-    //   imported.should.have.property('logger').which.is.an.Object();
-    //   imported.should.have.property('index').which.is.an.Object();
-    // });
+      imported.should.have.property('jwt').which.is.an.Object();
+      imported.should.have.property('logger').which.is.an.Object();
+      imported.should.have.property('index').which.is.an.Object();
+    });
   });
 });
