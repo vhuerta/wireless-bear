@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  yarn_install: 
+  yarninstall: 
     working_directory: ~/repo
     docker:
       - image: circleci/node:11.9
@@ -30,7 +30,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: yarn test
-  test:
+  coverage:
     working_directory: ~/repo
     docker:
       - image: circleci/node:11.9
@@ -46,10 +46,10 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - checkout
+      - yarninstall
       - test:
           requires:
-            - yarn_install
+            - yarninstall
       - coverage:
           requires:
             - test
