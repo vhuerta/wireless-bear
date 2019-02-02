@@ -44,7 +44,7 @@
     "start:dev": "npx nodemon src/index.js",
     "start:debug": "npx ndb nodemon src/index.js",
     "test": "NODE_PATH=.  NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 67e99740-1a5c-4e93-9672-2ace733aa371"
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN"
   },
   "keywords": [],
   "author": "Victor Huerta <vhuertahnz@gmail.com> https://github.com/vhuerta",
