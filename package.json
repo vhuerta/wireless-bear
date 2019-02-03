@@ -41,6 +41,7 @@
     "should": "^13.2.3"
   },
   "scripts": {
+    "start": "node src/index.js",
     "start:dev": "npx nodemon src/index.js",
     "start:debug": "npx ndb nodemon src/index.js",
     "test": "NODE_PATH=.  NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha",
