@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const logger = require('./logger');
 const app = require('./app');
+const config = require('./config').webserver;
 
 const passport = require('./middlewares/passport');
 const jwt = require('./middlewares/jwt');
@@ -21,6 +22,6 @@ expressApp.use(jwt);
 
 server.applyMiddleware({ app: expressApp, path });
 
-expressApp.listen({ port: 4000 }, () =>
-  logger.info(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+expressApp.listen({ port: config.port }, () =>
+  logger.info(`🚀 Server ready at http://localhost:${config.port}${server.graphqlPath}`)
 );
