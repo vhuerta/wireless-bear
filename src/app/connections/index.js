@@ -1,23 +1,20 @@
 const mongoose = require('mongoose');
 const redis = require('redis');
 
+const config = require('../../config').connections;
+
 const models = {};
 let connection = null;
 let client = null;
 
 async function makeRedisConnection() {
   if (client === null) {
-    client = redis.createClient(
-      'redis://localhost'
-    );
+    client = redis.createClient(config.redis.connectionUrl);
   }
   return client;
 }
 
-async function makeMongoConnection(
-  _models = {},
-  url = 'mongodb://localhost:27017/bear'
-) {
+async function makeMongoConnection(_models = {}, url = config.mongo.connectionUrl) {
   if (connection === null) {
     // TODO: unhardcode the connection url
     // TODO: handle connection loose
@@ -27,9 +24,9 @@ async function makeMongoConnection(
     });
 
     // Load all models dynamically from the models object
-    Object.keys(_models).forEach(
-      modelName =>
-        (models[modelName] = connection.model(modelName, _models[modelName]))
+    const modelNames = Object.keys(_models);
+    modelNames.forEach(
+      modelName => (models[modelName] = connection.model(modelName, _models[modelName]))
     );
   }
 
