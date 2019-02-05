@@ -45,6 +45,7 @@
     "start:dev": "npx nodemon src/index.js",
     "start:debug": "npx ndb nodemon src/index.js",
     "test": "NODE_PATH=.  NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha",
+    "test:debug": "NODE_PATH=.  NODE_ENV=test npx ndb mocha",
     "coverage": "NODE_PATH=.  NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov mocha && codecov -t $CODECOV_TOKEN"
   },
   "keywords": [],

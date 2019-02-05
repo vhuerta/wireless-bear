@@ -1,39 +1,4 @@
-const { gql } = require('apollo-server-express');
 const { makeMongoConnection, makeRedisConnection } = require('./connections');
-const merge = require('lodash/merge');
-
-/**
- * Root query Object
- */
-const rootTypeDef = gql`
-  type Query {
-    ping: String
-  }
-
-  type Mutation {
-    pong(message: String): String
-  }
-`;
-
-/**
- * Build the basic structure for an Apollo Server app
- *
- *
- * @param {*} modules
- */
-const makeModulesStructure = modules =>
-  Object.keys(modules).reduce(
-    (app, moduleName) => ({
-      typeDefs : [...app.typeDefs, modules[moduleName].typeDefs],
-      resolvers: merge({}, app.resolvers, modules[moduleName].resolvers), // Resolvers should be deep merged
-      models   : { ...app.models, [moduleName]: modules[moduleName].model }
-    }),
-    {
-      typeDefs : [rootTypeDef],
-      resolvers: {},
-      models   : {}
-    }
-  );
 
 /**
  * Generates the context callback for the app,
@@ -55,4 +20,4 @@ const makeContext = mongooseModels => async ({ req }) => {
   };
 };
 
-module.exports = { makeContext, makeModulesStructure };
+module.exports = { makeContext };

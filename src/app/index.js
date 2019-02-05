@@ -1,11 +1,6 @@
-const { makeContext, makeModulesStructure } = require('./tools.js');
+const { makeContext } = require('./tools.js');
+const { typeDefs, resolvers, models } = require('./modules').modules;
 
-const modules = {
-  Patient: require('./modules/patients'),
-  User   : require('./modules/users')
-};
-
-const { typeDefs, resolvers, models } = makeModulesStructure(modules);
 const app = {
   typeDefs,
   resolvers,

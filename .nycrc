@@ -6,6 +6,6 @@
   "functions": 98,
   "branches": 98,
   "exclude": [
-    "src/**/*.spec.js"
+    "test/**/*.spec.js"
   ]
 }
