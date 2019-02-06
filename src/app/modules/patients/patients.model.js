@@ -1,10 +1,10 @@
-const { Schema } = require('mongoose');
+// const { Schema } = require('mongoose');
 
-const Patient = new Schema({
-  name          : String,
-  mothersSuname : String,
-  fathersSurname: String,
-  birthDay      : Date
-});
+// const Patient = new Schema({
+//   name          : String,
+//   mothersSuname : String,
+//   fathersSurname: String,
+//   birthDay      : Date
+// });
 
-module.exports = Patient;
+// module.exports = Patient;

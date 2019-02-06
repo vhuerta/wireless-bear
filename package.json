@@ -38,14 +38,14 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.5",
     "nyc": "^13.1.0",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "sinon": "^7.2.3"
   },
   "scripts": {
     "start": "node src/index.js",
     "start:dev": "npx nodemon src/index.js",
     "start:debug": "npx ndb nodemon src/index.js",
-    "test": "NODE_PATH=.  NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha",
-    "test:debug": "NODE_PATH=.  NODE_ENV=test npx ndb mocha",
+    "test": "NODE_PATH=.  NODE_ENV=test nodemon --watch . --exec 'nyc --reporter=html --reporter=text --reporter=lcov mocha'",
     "coverage": "NODE_PATH=.  NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov mocha && codecov -t $CODECOV_TOKEN"
   },
   "keywords": [],

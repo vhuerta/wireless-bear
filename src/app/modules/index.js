@@ -5,8 +5,8 @@ const { gql } = require('apollo-server-express');
 const merge = require('lodash/merge');
 
 const modules = {
-  Patient: require('./patients'),
-  User   : require('./users')
+  // Patient: require('./patients'),
+  User: require('./users')
 };
 
 /**

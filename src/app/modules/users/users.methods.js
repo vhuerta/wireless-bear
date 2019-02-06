@@ -17,7 +17,6 @@ async function _createUser(
   { name, mothersSurname, fathersSurname, email, password }
 ) {
   const hashedPassword = await bcrypt.hash(password, 2);
-
   return new model({
     name,
     mothersSurname,
