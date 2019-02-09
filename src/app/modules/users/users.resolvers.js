@@ -12,6 +12,7 @@ const {
   makeGetUserByCredentials
 } = require('./users.methods');
 const { validateSignUp, validateLogin } = require('./users.validations');
+const { verifyAuthentication } = require('../../helpers');
 
 /**
  * SignUp resolver
@@ -75,9 +76,17 @@ async function login(_, { input }, { models, redis }) {
   return { id: user.id, user, token };
 }
 
+async function verifyToken(_, __, { user }) {
+  verifyAuthentication(user);
+  return { user };
+}
+
 module.exports = {
   Mutation: {
     signUp,
     login
+  },
+  Query: {
+    verifyToken
   }
 };

@@ -33,4 +33,8 @@ module.exports = gql`
     login(input: LoginInput!): AuthenticatedPayload
     signUp(input: SignUpInput): AuthenticatedPayload
   }
+
+  extend type Query {
+    verifyToken: User
+  } 
 `;
