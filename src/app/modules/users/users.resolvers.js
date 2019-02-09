@@ -78,7 +78,7 @@ async function login(_, { input }, { models, redis }) {
 
 async function verifyToken(_, __, { user }) {
   verifyAuthentication(user);
-  return { user };
+  return { id: user._id.toString(), ...user };
 }
 
 module.exports = {
